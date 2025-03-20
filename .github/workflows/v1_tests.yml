@@ -39,4 +39,4 @@ jobs:
             - name: Run tests
               run: |
                 echo $ABC
-                pytest
+                pytest --version
