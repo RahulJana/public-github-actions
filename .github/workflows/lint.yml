@@ -1,0 +1,33 @@
+name: Python Code Formatting 
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.py'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.py'
+
+jobs:
+  flake8:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: pip install flake8 
+
+      - name: Check flake8 
+        continue-on-error: false 
+        run: |
+          flake8 --count . --ignore=E402
+    
